@@ -3,7 +3,7 @@
 **Course:** Improve Your Business with Excellent Customer Service (TGS-2025056191)  
 **Topic 8:** Recovering Difficult Customers  
 **Mapping:** LO2 · K1, K3, A3 · Apply HEARD/LAST de-escalation, establish common ground and set limits professionally.  
-**Format:** Role Play + Case Study  ·  **Duration:** 35 minutes  
+**Format:** Role Play + Case Study  ·  **Duration:** 15 minutes  
 **Roles:** Pairs or trios. A = Duty Manager, B = Mr Wong, C = observer scoring against HEARD.
 
 ---

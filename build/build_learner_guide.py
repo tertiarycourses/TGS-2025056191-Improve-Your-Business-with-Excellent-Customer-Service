@@ -39,6 +39,7 @@ def steps(xs): B.append(("steps", xs))
 def note(t): B.append(("note", t))
 def rule(): B.append(("rule",))
 def dl(pairs): B.append(("dl", pairs))
+def img(name, cap=""): B.append(("img", name, cap))
 
 # ================================================================= content
 h1("Introduction")
@@ -81,6 +82,25 @@ bullets([C.ASSESSMENT["written"], C.ASSESSMENT["practical"],
          "Submit your completed answers on the LMS at https://lms-tms.tertiaryinfotech.com/."])
 
 # ---------------- per-topic, per-activity ----------------
+# Each topic carries the same figure(s) the slide deck uses, so the guide is a
+# visual reference and not a wall of prose.
+TOPIC_FIGURES = {
+ 1: [("service_chain.png", "The service chain — a break anywhere upstream surfaces as a frontline failure."),
+     ("retention_economics.png", "Why service pays: acquisition costs about 5x retention, and retention compounds.")],
+ 2: [("first_impression.png", "First impressions form in 4–7 seconds, mostly from what the customer sees and hears.")],
+ 3: [("listening_funnel.png", "Active listening — paraphrasing is what makes listening visible to the customer."),
+     ("four_levels.png", "The four levels of addressing customer needs — a ladder, not a menu."),
+     ("said_vs_needed.png", "What the customer said versus what the customer needs.")],
+ 5: [("phone_flow.png", "The professional call — six stages, with the four-part hold at stage 4.")],
+ 6: [("email_anatomy.png", "The five-part service email."),
+     ("channel_matrix.png", "Choosing the channel from the issue: urgency against complexity.")],
+ 7: [("feedback_channels.png", "Feedback channels — reach versus diagnostic depth. No channel does both."),
+     ("complaint_iceberg.png", "Most unhappy customers never complain — silence is not satisfaction."),
+     ("closed_loop.png", "Closing the loop — only step 4 is visible to the customer.")],
+ 8: [("heard_framework.png", "HEARD — the service-recovery sequence.")],
+ 9: [("escalation_ladder.png", "Where the line is: anger attacks the problem, abuse attacks the person.")],
+}
+
 for t in C.TOPICS:
     h1(f"Topic {t['num']} — {t['title']}")
     p(t["subtitle"])
@@ -88,6 +108,8 @@ for t in C.TOPICS:
     h3("Key concepts")
     for title, caption in t["concepts"]:
         B.append(("concept", title, caption))
+    for fig, cap in TOPIC_FIGURES.get(t["num"], []):
+        img(fig, cap)
 
     for a in [x for x in ACT if x["topic"] == t["num"]]:
         h2(f"Activity {a['num']} — {a['title']}")
@@ -250,6 +272,18 @@ for kind, *rest in B:
         para = doc.add_paragraph()
         r = para.add_run("Note: "); r.bold = True; r.font.color.rgb = BRAND
         para.add_run(rest[0]).font.size = Pt(10)
+    elif kind == "img":
+        name, cap = rest[0], rest[1]
+        path = os.path.join(ASSETS, name)
+        if os.path.exists(path):
+            from docx.shared import Inches as _In
+            pic = doc.add_paragraph()
+            pic.alignment = WD_ALIGN_PARAGRAPH.CENTER
+            pic.add_run().add_picture(path, width=_In(6.0))
+            if cap:
+                cp = doc.add_paragraph(); cp.alignment = WD_ALIGN_PARAGRAPH.CENTER
+                cr = cp.add_run(cap); cr.italic = True
+                cr.font.size = Pt(9.5); cr.font.color.rgb = GREY
     elif kind == "rule":
         doc.add_paragraph("")
     elif kind == "dl":

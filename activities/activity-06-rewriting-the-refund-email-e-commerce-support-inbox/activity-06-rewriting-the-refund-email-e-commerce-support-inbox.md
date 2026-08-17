@@ -3,7 +3,7 @@
 **Course:** Improve Your Business with Excellent Customer Service (TGS-2025056191)  
 **Topic 6:** Customer Service via Email and Chat  
 **Mapping:** LO1 · K1, K2, A1 · Apply netiquette and the five-part email structure; choose email vs chat correctly.  
-**Format:** Case Study + Practical Writing  ·  **Duration:** 25 minutes  
+**Format:** Case Study + Practical Writing  ·  **Duration:** 15 minutes  
 **Roles:** Individually, then compare in pairs.
 
 ---

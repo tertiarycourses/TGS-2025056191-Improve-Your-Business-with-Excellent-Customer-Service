@@ -3,7 +3,7 @@
 **Course:** Improve Your Business with Excellent Customer Service (TGS-2025056191)  
 **Topic 7:** Generating Return Business from Feedback  
 **Mapping:** LO2 · K2, K3, A1, A3 · Analyse multi-channel feedback, find root causes, and build a closed-loop improvement plan.  
-**Format:** Case Study + Group Presentation  ·  **Duration:** 40 minutes  
+**Format:** Case Study + Group Presentation  ·  **Duration:** 20 minutes  
 **Roles:** Groups of 4–5. Each group presents a 3-minute plan to the class acting as management.
 
 ---

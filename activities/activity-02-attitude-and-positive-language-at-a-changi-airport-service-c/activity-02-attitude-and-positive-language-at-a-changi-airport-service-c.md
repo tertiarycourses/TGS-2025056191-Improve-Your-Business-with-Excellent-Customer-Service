@@ -3,7 +3,7 @@
 **Course:** Improve Your Business with Excellent Customer Service (TGS-2025056191)  
 **Topic 2:** Establishing Your Service Attitude  
 **Mapping:** LO1 · K1 · Apply service attitude, body language and positive language under pressure.  
-**Format:** Role Play + Peer Sharing  ·  **Duration:** 25 minutes  
+**Format:** Role Play + Peer Sharing  ·  **Duration:** 15 minutes  
 **Roles:** Pairs. Role A = Service Officer, Role B = Mr Krishnan. Swap after the first round. Observers score.
 
 ---

@@ -3,7 +3,7 @@
 **Course:** Improve Your Business with Excellent Customer Service (TGS-2025056191)  
 **Topic 9:** Understanding When to Escalate  
 **Mapping:** LO2 · K3, A3 · Distinguish anger from abuse, apply the three-strike rule, escalate correctly and document.  
-**Format:** Role Play + Decision Exercise  ·  **Duration:** 30 minutes  
+**Format:** Role Play + Decision Exercise  ·  **Duration:** 15 minutes  
 **Roles:** Trios. A = Service Officer, B = Mr Teo (trainer may play this role), C = supervisor/observer.
 
 ---

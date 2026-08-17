@@ -3,7 +3,7 @@
 **Course:** Improve Your Business with Excellent Customer Service (TGS-2025056191)  
 **Topic 1:** Understanding Customers & Customer Service  
 **Mapping:** LO1 · K1 · Understand internal vs external customers and how the service chain shapes experience.  
-**Format:** Case Study + Peer Sharing  ·  **Duration:** 30 minutes  
+**Format:** Case Study + Peer Sharing  ·  **Duration:** 20 minutes  
 **Roles:** Groups of 4–5. Each group maps the chain; one member presents.
 
 ---

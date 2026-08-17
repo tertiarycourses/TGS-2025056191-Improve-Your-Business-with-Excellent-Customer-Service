@@ -3,7 +3,7 @@
 **Course:** Improve Your Business with Excellent Customer Service (TGS-2025056191)  
 **Topic 3:** Identifying and Addressing Customer Needs  
 **Mapping:** LO1 · K1, A2 · Identify functional and emotional needs, and map them to the four levels of addressing needs.  
-**Format:** Case Study + Role Play  ·  **Duration:** 35 minutes  
+**Format:** Case Study + Role Play  ·  **Duration:** 20 minutes  
 **Roles:** Pairs. Role A = TechNova Account Manager, Role B = Daniel Lim. Assessor-style observer optional.
 
 ---

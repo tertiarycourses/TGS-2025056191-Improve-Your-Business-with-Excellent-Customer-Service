@@ -3,7 +3,7 @@
 **Course:** Improve Your Business with Excellent Customer Service (TGS-2025056191)  
 **Topic 4:** In-Person Customer Service  
 **Mapping:** LO1 · K1, A1 · Handle in-person and at-your-desk requests using body language and acknowledgement.  
-**Format:** Role Play  ·  **Duration:** 25 minutes  
+**Format:** Role Play  ·  **Duration:** 15 minutes  
 **Roles:** Groups of 4. Role A = Service Officer, B = SIM customer, C = Ms Chen, D = observer/phone caller.
 
 ---

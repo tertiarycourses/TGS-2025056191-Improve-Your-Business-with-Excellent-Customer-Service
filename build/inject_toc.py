@@ -13,7 +13,23 @@ from docx import Document
 from docx.shared import Pt, Inches, RGBColor
 from docx.enum.text import WD_TAB_ALIGNMENT, WD_TAB_LEADER
 from docx.oxml.ns import qn
+from docx.oxml import OxmlElement
 from pypdf import PdfReader
+
+
+def _fld(kind, instr=None):
+    """Build a w:r carrying a field character (or the instruction text)."""
+    r = OxmlElement("w:r")
+    if kind == "instr":
+        it = OxmlElement("w:instrText")
+        it.set(qn("xml:space"), "preserve")
+        it.text = instr
+        r.append(it)
+    else:
+        fc = OxmlElement("w:fldChar")
+        fc.set(qn("w:fldCharType"), kind)
+        r.append(fc)
+    return r
 
 def norm(s):
     return re.sub(r'[^a-z0-9]', '', s.lower())
@@ -68,8 +84,16 @@ def main():
     if placeholder is None:
         print("  [inject_toc] no TOC placeholder found in", docx_path); return
 
-    # 5) build static TOC paragraphs, insert before placeholder, then delete it
+    # 5) build the TOC. The entries are static (so headless LibreOffice renders
+    #    real page numbers in the PDF), but they are wrapped in a genuine
+    #    { TOC \o "1-3" \h \z \u } field so Word still treats it as a live TOC
+    #    and can refresh it — static text alone silently goes stale.
     anchor = placeholder._p
+    _open = anchor.makeelement(qn('w:p'), {})
+    anchor.addprevious(_open)
+    _open.append(_fld("begin"))
+    _open.append(_fld("instr", f'TOC \\o "1-{maxlevel}" \\h \\z \\u '))
+    _open.append(_fld("separate"))
     GREY = RGBColor(0x33, 0x33, 0x33)
     for lvl, text, page in entries:
         new_p = anchor.makeelement(qn('w:p'), {})
@@ -86,6 +110,9 @@ def main():
         r.font.name = "Arial"
         r.bold = (lvl == 1)
         r.font.color.rgb = GREY
+    _close = anchor.makeelement(qn('w:p'), {})
+    anchor.addprevious(_close)
+    _close.append(_fld("end"))
     anchor.getparent().remove(anchor)
 
     doc.save(docx_path)

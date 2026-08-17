@@ -3,7 +3,7 @@
 **Course:** Improve Your Business with Excellent Customer Service (TGS-2025056191)  
 **Topic 5:** Customer Service Over the Phone  
 **Mapping:** LO1 · K1, A1 · Apply telephone etiquette, paraphrasing and hold technique with an angry caller.  
-**Format:** Role Play  ·  **Duration:** 30 minutes  
+**Format:** Role Play  ·  **Duration:** 15 minutes  
 **Roles:** Pairs, seated back to back so there is no visual channel. A = Hotline Officer, B = Mr Faisal.
 
 ---

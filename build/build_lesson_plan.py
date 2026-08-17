@@ -68,26 +68,34 @@ ASSESS_TEXT = {
  "RP": "Role Play (RP) — 2 simulated customer interactions covering A1, A2 and A3. Individual, summative, open book",
 }
 
-# (minutes, kind, ref)
+def _amin(n):
+    """Activity slot length — read from the activity data so the LP schedule,
+    the Activity Reference table, the PPT chips and the handouts can never
+    state different durations for the same activity."""
+    return [x for x in ACT if x["num"] == n][0]["minutes"]
+
+# (minutes, kind, ref).  Activity rows take their minutes from the activity data;
+# `None` here means "look it up".
 SEQ = [
  (20, "admin", "ADMIN"),
- (30, "topic", 0), (20, "activity", 0),
+ (30, "topic", 0), (None, "activity", 0),
  (25, "topic", 1),
  (15, "break", "Tea break"),
- (15, "activity", 1),
- (30, "topic", 2), (20, "activity", 2),
- (25, "topic", 3), (15, "activity", 3),
+ (None, "activity", 1),
+ (30, "topic", 2), (None, "activity", 2),
+ (25, "topic", 3), (None, "activity", 3),
  (15, "topic", 4),
  (60, "lunch", "Lunch break"),
- (15, "activity", 4),
- (20, "topic", 5), (15, "activity", 5),
- (25, "topic", 6), (20, "activity", 6),
+ (None, "activity", 4),
+ (20, "topic", 5), (None, "activity", 5),
+ (25, "topic", 6), (None, "activity", 6),
  (15, "break", "Tea break"),
- (20, "topic", 7), (15, "activity", 7),
- (20, "topic", 8), (15, "activity", 8),
+ (20, "topic", 7), (None, "activity", 7),
+ (20, "topic", 8), (None, "activity", 8),
  (10, "recap", "RECAP"),
  (30, "assess", "OQ"), (30, "assess", "RP"),
 ]
+SEQ = [(m if m is not None else _amin(ref + 1), k, ref) for m, k, ref in SEQ]
 
 def _hm(x):
     return f"{x // 60}:{x % 60:02d}"
@@ -108,11 +116,32 @@ def build_rows():
             text = ASSESS_TEXT[ref]
         else:
             text = ref
-        out.append((_hm(t), _hm(t + mins), mins, kind, text))
+        out.append((_hm(t), _hm(t + mins), mins, kind, text, ref if isinstance(ref, int) else None))
         t += mins
     return out
 
 SCHEDULE = {1: (C.DAY_THEMES[1], build_rows())}
+
+# Slide references — read from the deck's slide_map.json so the LP always cites
+# the CURRENT deck. Regenerate the deck before the LP if the numbering changed.
+import json
+_SM = {}
+_smp = os.path.join(HERE, "slide_map.json")
+if os.path.exists(_smp):
+    _SM = json.load(open(_smp))
+
+def slides_for(kind, idx=None):
+    """Return an 'a-b' slide range string for a topic or activity."""
+    if not _SM:
+        return ""
+    keys = sorted(_SM.items(), key=lambda kv: kv[1])
+    key = f"topic{idx+1}" if kind == "topic" else f"act{idx+1}"
+    if key not in _SM:
+        return ""
+    start = _SM[key]
+    later = [v for _k, v in keys if v > start]
+    end = (min(later) - 1) if later else start
+    return f"{start}–{end}" if end > start else str(start)
 
 # ---------------------------------------------------------------- build
 doc = Document()
@@ -194,24 +223,27 @@ KIND_FILL = {"topic": TOPIC_FILL, "break": BREAK_FILL, "lunch": LUNCH_FILL,
 H("Course Schedule", 1)
 for day, (theme, rows) in SCHEDULE.items():
     H(f"Day {day} — {theme}", 2)
-    tbl = doc.add_table(rows=0, cols=3); tbl.style = "Table Grid"
+    tbl = doc.add_table(rows=0, cols=4); tbl.style = "Table Grid"
     tbl.alignment = WD_TABLE_ALIGNMENT.CENTER
     hdr = tbl.add_row().cells
-    for i, htext in enumerate(["Time", "Duration", "Topic / Activity"]):
+    for i, htext in enumerate(["Time", "Duration", "Topic / Activity", "Slides"]):
         set_cell(hdr[i], htext, bold=True, size=10, color=RGBColor(0xFF, 0xFF, 0xFF), fill=HEADER_FILL)
     facilitation = 0; assessment = 0
-    for start, end, mins, kind, text in rows:
+    for start, end, mins, kind, text, ref in rows:
         cells = tbl.add_row().cells; fill = KIND_FILL.get(kind)
         set_cell(cells[0], f"{start}–{end}", bold=(kind in ("topic", "assess")), size=9.5, fill=fill)
         set_cell(cells[1], f"{mins} min", size=9.5, fill=fill)
         set_cell(cells[2], text, bold=(kind in ("topic", "assess")), size=9.5, fill=fill)
+        sl = slides_for(kind, ref) if kind in ("topic", "activity") else (
+             "13–15" if kind in ("assess", "recap") else ("2–12" if kind == "admin" else ""))
+        set_cell(cells[3], sl, size=9.5, fill=fill)
         if kind == "assess":
             assessment += mins
         elif kind != "lunch":
             facilitation += mins
     for row in tbl.rows:
-        row.cells[0].width = Inches(1.0); row.cells[1].width = Inches(0.8)
-        row.cells[2].width = Inches(5.0)
+        row.cells[0].width = Inches(0.95); row.cells[1].width = Inches(0.7)
+        row.cells[2].width = Inches(4.35); row.cells[3].width = Inches(0.75)
     p = doc.add_paragraph()
     r = p.add_run(f"Classroom facilitation: {facilitation} minutes ({facilitation/60:.0f} hours).  "
                   f"Assessment: {assessment} minutes ({assessment/60:.0f} hour).  "
@@ -221,9 +253,9 @@ for day, (theme, rows) in SCHEDULE.items():
     assert assessment == 60, f"assessment = {assessment}, expected 60 (1 h)"
 
 H("Activity Reference", 1)
-tt = doc.add_table(rows=0, cols=5); tt.style = "Table Grid"
+tt = doc.add_table(rows=0, cols=6); tt.style = "Table Grid"
 hdr = tt.add_row().cells
-for i, htext in enumerate(["Topic", "Activity", "Format", "Duration", "K / A mapped"]):
+for i, htext in enumerate(["Topic", "Activity", "Format", "Duration", "Slides", "K / A mapped"]):
     set_cell(hdr[i], htext, bold=True, size=10, color=RGBColor(0xFF, 0xFF, 0xFF), fill=HEADER_FILL)
 for tp in C.TOPICS:
     acts = [a for a in ACT if a["topic"] == tp["num"]]
@@ -233,7 +265,8 @@ for tp in C.TOPICS:
         set_cell(cells[1], f"Activity {a['num']}: {a['title']}", size=9)
         set_cell(cells[2], a["type"], size=9)
         set_cell(cells[3], f"{a['minutes']} min", size=9)
-        set_cell(cells[4], a["objective"].split("·")[1].strip() if "·" in a["objective"] else "", size=9)
+        set_cell(cells[4], slides_for("activity", a["num"] - 1), size=9)
+        set_cell(cells[5], a["objective"].split("·")[1].strip() if "·" in a["objective"] else "", size=9)
 
 H("Instructional Methods", 1)
 im = doc.add_table(rows=0, cols=3); im.style = "Table Grid"

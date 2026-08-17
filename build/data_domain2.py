@@ -7,7 +7,7 @@ discussion questions, trainer debrief, LG-only step-by-step, and a test.
 
 DOMAIN2 = [
     dict(
-        num=7, topic=7, minutes=40,
+        num=7, topic=7, minutes=20,
         title="Closing the Loop — F&B Chain Losing Repeat Customers",
         type="Case Study + Group Presentation",
         objective="LO2 · K2, K3, A1, A3 · Analyse multi-channel feedback, find root causes, and build a closed-loop improvement plan.",
@@ -64,7 +64,7 @@ DOMAIN2 = [
     ),
 
     dict(
-        num=8, topic=8, minutes=35,
+        num=8, topic=8, minutes=15,
         title="Service Recovery Under Pressure — The Wedding Catering Failure",
         type="Role Play + Case Study",
         objective="LO2 · K1, K3, A3 · Apply HEARD/LAST de-escalation, establish common ground and set limits professionally.",
@@ -120,7 +120,7 @@ DOMAIN2 = [
     ),
 
     dict(
-        num=9, topic=9, minutes=30,
+        num=9, topic=9, minutes=15,
         title="Drawing the Line — Escalation and Abuse at a Service Counter",
         type="Role Play + Decision Exercise",
         objective="LO2 · K3, A3 · Distinguish anger from abuse, apply the three-strike rule, escalate correctly and document.",

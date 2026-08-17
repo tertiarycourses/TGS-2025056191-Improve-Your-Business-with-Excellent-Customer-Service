@@ -13,7 +13,7 @@ Each activity is a REAL-WORLD Singapore case study with:
 
 DOMAIN1 = [
     dict(
-        num=1, topic=1, minutes=30,
+        num=1, topic=1, minutes=20,
         title="Mapping the Service Chain at a Singapore Bank Branch",
         type="Case Study + Peer Sharing",
         objective="LO1 · K1 · Understand internal vs external customers and how the service chain shapes experience.",
@@ -64,7 +64,7 @@ DOMAIN1 = [
     ),
 
     dict(
-        num=2, topic=2, minutes=25,
+        num=2, topic=2, minutes=15,
         title="Attitude and Positive Language at a Changi Airport Service Counter",
         type="Role Play + Peer Sharing",
         objective="LO1 · K1 · Apply service attitude, body language and positive language under pressure.",
@@ -114,7 +114,7 @@ DOMAIN1 = [
     ),
 
     dict(
-        num=3, topic=3, minutes=35,
+        num=3, topic=3, minutes=20,
         title="Diagnosing Customer Needs at a Growing SME — TechNova Account Review",
         type="Case Study + Role Play",
         objective="LO1 · K1, A2 · Identify functional and emotional needs, and map them to the four levels of addressing needs.",
@@ -167,7 +167,7 @@ DOMAIN1 = [
     ),
 
     dict(
-        num=4, topic=4, minutes=25,
+        num=4, topic=4, minutes=15,
         title="The Walk-In Interruption — Retail Service Counter, Bugis",
         type="Role Play",
         objective="LO1 · K1, A1 · Handle in-person and at-your-desk requests using body language and acknowledgement.",
@@ -216,7 +216,7 @@ DOMAIN1 = [
     ),
 
     dict(
-        num=5, topic=5, minutes=30,
+        num=5, topic=5, minutes=15,
         title="The Angry Delivery Call — Logistics Hotline",
         type="Role Play",
         objective="LO1 · K1, A1 · Apply telephone etiquette, paraphrasing and hold technique with an angry caller.",
@@ -269,7 +269,7 @@ DOMAIN1 = [
     ),
 
     dict(
-        num=6, topic=6, minutes=25,
+        num=6, topic=6, minutes=15,
         title="Rewriting the Refund Email — E-Commerce Support Inbox",
         type="Case Study + Practical Writing",
         objective="LO1 · K1, K2, A1 · Apply netiquette and the five-part email structure; choose email vs chat correctly.",

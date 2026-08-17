@@ -302,7 +302,7 @@ two_col("Lesson Plan — 1 Day, 9:00am–6:00pm", [
     ("Tea break (15 min)", 1),
     ("Topic 3: Identifying Customer Needs + Activity 3", 1),
     ("Topic 4: In-Person Service + Activity 4", 1),
-    ("Lunch break 1:00–2:00pm", 1)],
+    ("Lunch break 12:50–1:50pm", 1)],
     [("Afternoon (PM attendance)", 0, True),
      ("Topic 5: Phone Service + Activity 5", 1),
      ("Topic 6: Email & Chat Service + Activity 6", 1),
@@ -534,7 +534,7 @@ stack_slide("Handling a Walk-In While You Are Already Busy", [
 mark("act4"); a = ACTIVITIES[3]
 case_slide(a, T); questions_slide(a, T); debrief_slide(a, T)
 
-brk("Lunch Break", "1:00pm – 2:00pm")
+brk("Lunch Break", "12:50pm – 1:50pm")
 
 # ---------------------------------------------------------------- TOPIC 5
 T = C.TOPICS[4]; mark("topic5")
