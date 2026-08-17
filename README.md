@@ -59,7 +59,9 @@ courseware/
 │   ├── Improve Your Business with Excellent Customer Service-v2.0.pptx   110-slide deck (+ PDF)
 │   ├── LP-Improve Your Business with Excellent Customer Service.docx     Lesson Plan, 9 pp (+ PDF)
 │   └── LG-Improve Your Business with Excellent Customer Service.docx     Learner Guide, 39 pp (+ PDF)
-├── activities/          9 case-study activities — one folder each (.md + printable .pdf)
+├── activities/          9 case-study activities — one folder each, containing
+│                        the brief (.md + .pdf), a reflection worksheet (.pdf),
+│                        and for the 6 role plays an observer checklist (.pdf)
 ├── assets/              brand graphics (generated, matplotlib) + logo
 ├── build/               the single-source build pipeline
 └── .env                 courseware + Drive links
@@ -75,17 +77,23 @@ courseware/
 Nine real-world Singapore case studies. Each has a **scenario**, **discussion questions**, a
 detailed **step-by-step**, a trainer **debrief** and a **self-check** standard.
 
-| # | Activity | Topic | Format | Min |
-|---|---|---|---|---|
-| 1 | Mapping the Service Chain at a Singapore Bank Branch | 1 | Case Study + Peer Sharing | 20 |
-| 2 | Attitude and Positive Language at a Changi Airport Service Counter | 2 | Role Play + Peer Sharing | 15 |
-| 3 | Diagnosing Customer Needs at a Growing SME — TechNova Account Review | 3 | Case Study + Role Play | 20 |
-| 4 | The Walk-In Interruption — Retail Service Counter, Bugis | 4 | Role Play | 15 |
-| 5 | The Angry Delivery Call — Logistics Hotline | 5 | Role Play | 15 |
-| 6 | Rewriting the Refund Email — E-Commerce Support Inbox | 6 | Case Study + Practical Writing | 15 |
-| 7 | Closing the Loop — F&B Chain Losing Repeat Customers | 7 | Case Study + Group Presentation | 20 |
-| 8 | Service Recovery Under Pressure — The Wedding Catering Failure | 8 | Role Play + Case Study | 15 |
-| 9 | Drawing the Line — Escalation and Abuse at a Service Counter | 9 | Role Play + Decision Exercise | 15 |
+| # | Activity | Topic | Format | Min | Checklist |
+|---|---|---|---|---|---|
+| 1 | Mapping the Service Chain at a Singapore Bank Branch | 1 | Case Study + Peer Sharing | 20 | — |
+| 2 | Attitude and Positive Language at a Changi Airport Service Counter | 2 | Role Play + Peer Sharing | 15 | ✅ |
+| 3 | Diagnosing Customer Needs at a Growing SME — TechNova Account Review | 3 | Case Study + Role Play | 20 | ✅ |
+| 4 | The Walk-In Interruption — Retail Service Counter, Bugis | 4 | Role Play | 15 | ✅ |
+| 5 | The Angry Delivery Call — Logistics Hotline | 5 | Role Play | 15 | ✅ |
+| 6 | Rewriting the Refund Email — E-Commerce Support Inbox | 6 | Case Study + Practical Writing | 15 | — |
+| 7 | Closing the Loop — F&B Chain Losing Repeat Customers | 7 | Case Study + Group Presentation | 20 | — |
+| 8 | Service Recovery Under Pressure — The Wedding Catering Failure | 8 | Role Play + Case Study | 15 | ✅ |
+| 9 | Drawing the Line — Escalation and Abuse at a Service Counter | 9 | Role Play + Decision Exercise | 15 | ✅ |
+
+Every folder also carries a **reflection worksheet** (used after the debrief, to transfer the
+activity to the learner's own workplace). The six role-play activities additionally carry a
+one-page **observer checklist** whose criteria are taken from that activity's own debrief points —
+so what the observer scores is exactly what the trainer debriefs and what the assessor looks for
+in the Role Play assessment.
 
 See [`activities/README.md`](activities/README.md) for the full index and the activity → assessment mapping.
 
