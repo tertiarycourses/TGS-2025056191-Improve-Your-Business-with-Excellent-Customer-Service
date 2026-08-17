@@ -1,0 +1,25 @@
+# OS junk
+.DS_Store
+Thumbs.db
+~$*
+
+# Office lock files
+.~lock.*
+
+# Python
+__pycache__/
+*.pyc
+
+# Confidential — assessment papers and answer keys are trainer-only
+assessment/
+
+# Reference material (source PPT / old assessment) is not redistributed
+reference/
+
+# Build intermediates
+build/_engine.py
+build/slide_map.json
+build/_sched.py
+build/build_slides_compact_ref.py
+assets/_contact_sheet.png
+assets/_check*.png
